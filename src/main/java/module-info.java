@@ -12,5 +12,5 @@ module execactions {
 	opens space.sadfox.execactions.windows to javafx.fxml;
 	
 	provides Module with ExecActionModule;
-	provides ModuleExtension with space.sadfox.execactions.windows.ExecAction;
+	provides ModuleExtension with space.sadfox.execactions.windows.ExecCommand;
 }

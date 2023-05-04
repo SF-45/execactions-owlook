@@ -34,7 +34,7 @@ public class ExecCommandEditNode extends Controller {
     
 
 	ExecCommandEditNode() throws IOException {
-		super(ExecCommand.class.getResource("fxml/windows-exec-config.fxml"));
+		super(ExecAction.class.getResource("fxml/windows-exec-config.fxml"));
 	}
 
 }
