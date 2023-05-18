@@ -7,7 +7,7 @@ module execactions {
 	exports space.sadfox.execactions.windows;
 
 	requires space.sadfox.owlook;
-	requires space.sadfox.dataccess;
+	requires transitive space.sadfox.dataccess;
 	
 	opens space.sadfox.execactions.windows to javafx.fxml;
 	

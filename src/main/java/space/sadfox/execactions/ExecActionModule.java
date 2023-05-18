@@ -1,6 +1,10 @@
 package space.sadfox.execactions;
 
+import java.util.List;
+
+import space.sadfox.owlook.jaxb.JAXBEntity;
 import space.sadfox.owlook.moduleapi.Module;
+import space.sadfox.owlook.utils.Nullable;
 
 public class ExecActionModule implements Module {
 
@@ -19,6 +23,11 @@ public class ExecActionModule implements Module {
 	public String getModuleVersion() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Class<? extends JAXBEntity>> getJaxbEntities() throws Nullable {
+		throw new Nullable();
 	}
 
 }
