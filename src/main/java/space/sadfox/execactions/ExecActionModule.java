@@ -30,4 +30,10 @@ public class ExecActionModule implements Module {
 		throw new Nullable();
 	}
 
+	@Override
+	public void initModule() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
