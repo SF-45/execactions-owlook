@@ -4,6 +4,7 @@ import java.util.List;
 
 import space.sadfox.owlook.jaxb.JAXBEntity;
 import space.sadfox.owlook.moduleapi.Module;
+import space.sadfox.owlook.moduleapi.ModuleHasNoConfiguration;
 import space.sadfox.owlook.utils.Nullable;
 
 public class ExecActionModule implements Module {
@@ -34,6 +35,11 @@ public class ExecActionModule implements Module {
 	public void initModule() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Class<? extends JAXBEntity> getConfigTarget() throws ModuleHasNoConfiguration {
+		throw new ModuleHasNoConfiguration();
 	}
 
 }

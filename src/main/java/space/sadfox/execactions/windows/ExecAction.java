@@ -16,7 +16,7 @@ import space.sadfox.dataccess.dataccess.DataEntity;
 import space.sadfox.dataccess.dataccess.Field;
 import space.sadfox.dataccess.dataccess.TableData;
 import space.sadfox.owlook.ui.base.Controller;
-import space.sadfox.owlook.utils.ErrorLogger;
+import space.sadfox.owlook.utils.OwlLogger;
 import space.sadfox.owlook.utils.Nullable;
 
 public class ExecAction implements Action {
@@ -186,7 +186,7 @@ public class ExecAction implements Action {
 
 			return editNode;
 		} catch (IOException e) {
-			ErrorLogger.registerException(e);
+			OwlLogger.registerException(1, e);
 		}
 		return null;
 	}

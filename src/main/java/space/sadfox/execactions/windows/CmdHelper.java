@@ -9,7 +9,7 @@ import java.util.List;
 
 import space.sadfox.dataccess.dataccess.DataEntity;
 import space.sadfox.dataccess.dataccess.Field;
-import space.sadfox.owlook.utils.ErrorLogger;
+import space.sadfox.owlook.utils.OwlLogger;
 import space.sadfox.owlook.utils.ProjectPath;
 
 public class CmdHelper extends CommandHelper {
@@ -77,7 +77,7 @@ public class CmdHelper extends CommandHelper {
             file.deleteOnExit();
             new ProcessBuilder("cmd", "/C start " + file).start();
         } catch (IOException e) {
-            ErrorLogger.registerException(e);
+            OwlLogger.registerException(1, e);
         }
 		
 	}
