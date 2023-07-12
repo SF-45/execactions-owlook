@@ -3,21 +3,21 @@ package space.sadfox.execactions;
 import java.util.List;
 
 import space.sadfox.owlook.jaxb.JAXBEntity;
-import space.sadfox.owlook.moduleapi.Module;
+import space.sadfox.owlook.moduleapi.OwlookModule;
 import space.sadfox.owlook.moduleapi.ModuleHasNoConfiguration;
 import space.sadfox.owlook.utils.Nullable;
 
-public class ExecActionModule implements Module {
+public class ExecActionModule implements OwlookModule {
+
 
 	@Override
-	public String getModuleName() {
-		return "execactions";
+	public String getShortModuleDescription() {
+		return "Executing Commands in a Command Shell";
 	}
 
 	@Override
 	public String getModuleDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Executing Commands in a Command Shell";
 	}
 
 	@Override

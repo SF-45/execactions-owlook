@@ -1,5 +1,5 @@
 import space.sadfox.execactions.ExecActionModule;
-import space.sadfox.owlook.moduleapi.Module;
+import space.sadfox.owlook.moduleapi.OwlookModule;
 import space.sadfox.owlook.moduleapi.ModuleExtension;
 
 module execactions {
@@ -11,6 +11,6 @@ module execactions {
 	
 	opens space.sadfox.execactions.windows to javafx.fxml;
 	
-	provides Module with ExecActionModule;
+	provides OwlookModule with ExecActionModule;
 	provides ModuleExtension with space.sadfox.execactions.windows.ExecCommand;
 }
