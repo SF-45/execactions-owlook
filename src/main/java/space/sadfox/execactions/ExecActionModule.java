@@ -3,8 +3,8 @@ package space.sadfox.execactions;
 import java.util.List;
 
 import space.sadfox.owlook.jaxb.JAXBEntity;
-import space.sadfox.owlook.moduleapi.OwlookModule;
 import space.sadfox.owlook.moduleapi.ModuleHasNoConfiguration;
+import space.sadfox.owlook.moduleapi.OwlookModule;
 import space.sadfox.owlook.utils.Nullable;
 
 public class ExecActionModule implements OwlookModule {

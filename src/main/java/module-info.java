@@ -1,6 +1,6 @@
 import space.sadfox.execactions.ExecActionModule;
-import space.sadfox.owlook.moduleapi.OwlookModule;
 import space.sadfox.owlook.moduleapi.ModuleExtension;
+import space.sadfox.owlook.moduleapi.OwlookModule;
 
 module execactions {
 	exports space.sadfox.execactions;
