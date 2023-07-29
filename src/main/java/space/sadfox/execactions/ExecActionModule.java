@@ -2,18 +2,12 @@ package space.sadfox.execactions;
 
 import java.util.List;
 
-import space.sadfox.owlook.jaxb.JAXBEntity;
-import space.sadfox.owlook.moduleapi.ModuleHasNoConfiguration;
-import space.sadfox.owlook.moduleapi.OwlookModule;
-import space.sadfox.owlook.utils.Nullable;
+import space.sadfox.owlook.base.jaxb.JAXBEntity;
+import space.sadfox.owlook.base.moduleapi.ModuleHasNoConfiguration;
+import space.sadfox.owlook.base.moduleapi.ModuleHasNoProvideEntities;
+import space.sadfox.owlook.base.moduleapi.OwlookModule;
 
 public class ExecActionModule implements OwlookModule {
-
-
-	@Override
-	public String getShortModuleDescription() {
-		return "Executing Commands in a Command Shell";
-	}
 
 	@Override
 	public String getModuleDescription() {
@@ -27,8 +21,8 @@ public class ExecActionModule implements OwlookModule {
 	}
 
 	@Override
-	public List<Class<? extends JAXBEntity>> getJaxbEntities() throws Nullable {
-		throw new Nullable();
+	public List<Class<? extends JAXBEntity>> getJaxbEntities() throws ModuleHasNoProvideEntities {
+		throw new ModuleHasNoProvideEntities();
 	}
 
 	@Override

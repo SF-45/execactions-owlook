@@ -8,17 +8,6 @@ import space.sadfox.dataccess.dataccess.TableData;
 public class ExecCommand implements ActionProvider {
 
 	@Override
-	public String getModuleExtensionName() {
-		return "Windows Exec";
-	}
-
-	@Override
-	public String getModuleExtensionDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Action createAction(ActionEntity actionEntity, TableData target) {
 		return new ExecAction(actionEntity, target, this);
 	}
@@ -26,6 +15,17 @@ public class ExecCommand implements ActionProvider {
 	@Override
 	public Action createAction(ActionEntity actionEntity) {
 		return new ExecAction(actionEntity, this);
+	}
+
+	@Override
+	public String getComponentName() {
+		return "Windows Exec";
+	}
+
+	@Override
+	public String getComponentDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
