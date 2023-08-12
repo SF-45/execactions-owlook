@@ -6,9 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import space.sadfox.owlook.ui.base.Controller;
+import space.sadfox.owlook.ui.base.FXMLController;
 
-public class ExecCommandEditNode extends Controller {
+public class ExecCommandEditNode extends FXMLController {
 	
 	@FXML
     TextArea commandTextArea;
