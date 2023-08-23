@@ -21,7 +21,7 @@ public class ExecActionModule implements OwlookModule {
 	}
 
 	@Override
-	public List<Class<? extends JAXBEntity>> getJaxbEntities() throws ModuleHasNoProvideEntities {
+	public List<Class<? extends JAXBEntity>> getOwlEntities() throws ModuleHasNoProvideEntities {
 		throw new ModuleHasNoProvideEntities();
 	}
 
