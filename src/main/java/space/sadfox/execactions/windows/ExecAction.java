@@ -15,30 +15,31 @@ import space.sadfox.dataccess.action.ActionProvider;
 import space.sadfox.dataccess.dataccess.DataEntity;
 import space.sadfox.dataccess.dataccess.Field;
 import space.sadfox.dataccess.dataccess.TableData;
+import space.sadfox.owlook.base.owl.Owl;
 import space.sadfox.owlook.ui.base.Controller;
+import space.sadfox.owlook.utils.Logger;
 import space.sadfox.owlook.utils.Nullable;
-import space.sadfox.owlook.utils.OwlLogger;
 
 public class ExecAction implements Action {
 
-	private ActionEntity actionEntity;
+	private Owl<ActionEntity> actionEntityOwl;
 	private StringProperty execCommand;
 	private ObjectProperty<Mode> mode = new SimpleObjectProperty<>();
 	private ObjectProperty<Shell> shell = new SimpleObjectProperty<>();
 	private ExecCommand provider;
-	private TableData target;
+	private Owl<TableData> tableDataOwl;
 
 	private final String OPEN_REPLACE_AREA = "<ReplaceArea>";
 	private final String CLOSE_REPLACE_AREA = "</ReplaceArea>";
 
-	public ExecAction(ActionEntity actionEntity, TableData target, ExecCommand provider) {
-		this.actionEntity = actionEntity;
-		this.target = target;
+	public ExecAction(Owl<ActionEntity> actionEntityOwl, Owl<TableData> tableDataOwl, ExecCommand provider) {
+		this.actionEntityOwl = actionEntityOwl;
+		this.tableDataOwl = tableDataOwl;
 		this.provider = provider;
 
-		execCommand = actionEntity.getActionProperty(Properties.EXEC_COMMAND.name(), "");
+		execCommand = getActionEntityOwl().entity().getActionProperty(Properties.EXEC_COMMAND.name(), "");
 		// -----------------Mode-------------------
-		StringProperty execModeProp = actionEntity.getActionProperty(Properties.EXEC_MODE.name(), Mode.SINGLE.name());
+		StringProperty execModeProp = getActionEntityOwl().entity().getActionProperty(Properties.EXEC_MODE.name(), Mode.SINGLE.name());
 		execModeProp.addListener((property, oldValue, newValue) -> {
 			mode.set(Mode.valueOf(newValue));
 		});
@@ -47,7 +48,7 @@ public class ExecAction implements Action {
 			execModeProp.set(newValue.name());
 		});
 		// -----------------Shell-------------------
-		StringProperty shellProp = actionEntity.getActionProperty(Properties.EXEC_SHELL.name(), Shell.CMD.name());
+		StringProperty shellProp = getActionEntityOwl().entity().getActionProperty(Properties.EXEC_SHELL.name(), Shell.CMD.name());
 		shellProp.addListener((property, oldValue, newValue) -> {
 			shell.set(Shell.valueOf(newValue));
 		});
@@ -58,8 +59,8 @@ public class ExecAction implements Action {
 
 	}
 
-	public ExecAction(ActionEntity actionEntity, ExecCommand provider) {
-		this(actionEntity, null, provider);
+	public ExecAction(Owl<ActionEntity> actionEntityOwl, ExecCommand provider) {
+		this(actionEntityOwl, null, provider);
 	}
 
 	@Override
@@ -186,16 +187,23 @@ public class ExecAction implements Action {
 
 			return editNode;
 		} catch (IOException e) {
-			OwlLogger.registerException(1, e);
+			Logger.registerException(1, e);
 		}
 		return null;
 	}
 
 	private TableData getTableData() throws Nullable {
-		if (target == null)
-			throw new Nullable();
-		return target;
+		return getTableDataOwl().entity();
 	}
+
+	private Owl<TableData> getTableDataOwl() throws Nullable {
+		if (tableDataOwl == null) {
+			throw new Nullable();
+		}
+		return tableDataOwl;
+	}
+	
+	
 
 //	@Override
 //	public Controller getConfigController(TableData target) {
@@ -286,6 +294,8 @@ public class ExecAction implements Action {
 //		return editNode;
 //	}
 
+	
+
 	@Override
 	public void run(DataEntity... dataEntities) {
 		String com = "";
@@ -299,13 +309,13 @@ public class ExecAction implements Action {
 			break;
 		}
 
-		commandHelper.execCommand(actionEntity.getFileName(), com);
+		commandHelper.execCommand(getActionEntityOwl().fileName(), com);
 
 	}
-
+	
 	@Override
-	public ActionEntity getActionEntity() {
-		return actionEntity;
+	public Owl<ActionEntity> getActionEntityOwl() {
+		return actionEntityOwl;
 	}
 
 	@Override

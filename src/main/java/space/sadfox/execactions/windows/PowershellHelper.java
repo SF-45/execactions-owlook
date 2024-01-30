@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 import space.sadfox.dataccess.dataccess.DataEntity;
 import space.sadfox.dataccess.dataccess.Field;
-import space.sadfox.owlook.utils.OwlLogger;
+import space.sadfox.owlook.utils.Logger;
 import space.sadfox.owlook.utils.ProjectPath;
 
 public class PowershellHelper extends CommandHelper {
@@ -59,7 +59,7 @@ public class PowershellHelper extends CommandHelper {
             outputStream.write(command.getBytes(StandardCharsets.UTF_16));
             new ProcessBuilder("cmd.exe", "/C start powershell -executionpolicy RemoteSigned -file " + file).start();
         } catch (IOException e) {
-            OwlLogger.registerException(1, e);
+            Logger.registerException(1, e);
         }
 		
 	}
