@@ -77,7 +77,7 @@ public class CmdHelper extends CommandHelper {
             file.deleteOnExit();
             new ProcessBuilder("cmd", "/C start " + file).start();
         } catch (IOException e) {
-            Owlook.registerException(1, e);
+            Owlook.registerException(e);
         }
 		
 	}

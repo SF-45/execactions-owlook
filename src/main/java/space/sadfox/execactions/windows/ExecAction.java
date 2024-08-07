@@ -192,7 +192,7 @@ public class ExecAction implements Action {
 
       return editNode;
     } catch (IOException e) {
-      Owlook.registerException(1, e);
+      Owlook.registerException(e);
     }
     return null;
   }

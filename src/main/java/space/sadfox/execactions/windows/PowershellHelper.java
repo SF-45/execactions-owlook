@@ -59,7 +59,7 @@ public class PowershellHelper extends CommandHelper {
             outputStream.write(command.getBytes(StandardCharsets.UTF_16));
             new ProcessBuilder("cmd.exe", "/C start powershell -executionpolicy RemoteSigned -file " + file).start();
         } catch (IOException e) {
-            Owlook.registerException(1, e);
+            Owlook.registerException(e);
         }
 		
 	}
