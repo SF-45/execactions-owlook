@@ -1,36 +1,34 @@
 package space.sadfox.execactions.windows;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import space.sadfox.owlook.ui.base.ControllerException;
 import space.sadfox.owlook.ui.base.FXMLController;
 
 public class ExecCommandEditNode extends FXMLController {
-	
-	@FXML
-    TextArea commandTextArea;
 
-    @FXML
-    Label head;
+  @FXML
+  TextArea commandTextArea;
 
-    @FXML
-    RadioButton multiExec;
+  @FXML
+  Label head;
 
-    @FXML
-    RadioButton singleExec;
-    
-    @FXML
-    RadioButton powershellShell;
-    
-    @FXML
-    RadioButton cmdShell;
-    
+  @FXML
+  RadioButton multiExec;
 
-	ExecCommandEditNode() throws IOException {
-		super(ExecAction.class.getResource("fxml/windows-exec-config.fxml"));
-	}
+  @FXML
+  RadioButton singleExec;
+
+  @FXML
+  RadioButton powershellShell;
+
+  @FXML
+  RadioButton cmdShell;
+
+  ExecCommandEditNode() throws ControllerException {
+    super(ExecAction.class.getResource("fxml/windows-exec-config.fxml"));
+  }
 
 }

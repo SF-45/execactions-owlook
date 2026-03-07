@@ -1,6 +1,5 @@
 package space.sadfox.execactions.windows;
 
-import java.io.IOException;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
@@ -16,6 +15,7 @@ import space.sadfox.dataccess.dataccess.Field;
 import space.sadfox.dataccess.dataccess.TableData;
 import space.sadfox.owlook.base.owl.Owl;
 import space.sadfox.owlook.ui.base.Controller;
+import space.sadfox.owlook.ui.base.ControllerException;
 import space.sadfox.owlook.utils.Nullable;
 import space.sadfox.owlook.utils.Owlook;
 
@@ -191,7 +191,7 @@ public class ExecAction implements Action {
       }
 
       return editNode;
-    } catch (IOException e) {
+    } catch (ControllerException e) {
       Owlook.registerException(e);
     }
     return null;
@@ -208,8 +208,6 @@ public class ExecAction implements Action {
     return tableDataOwl;
   }
 
-
-
   // @Override
   // public Controller getConfigController(TableData target) {
   // ExecCommandEditNode editNode = (ExecCommandEditNode) getConfigController();
@@ -218,7 +216,8 @@ public class ExecAction implements Action {
   // for (Field field : target.getFields()) {
   // MenuItem insField = new MenuItem(field.getFieldName());
   // insField.setOnAction(event -> {
-  // if (editNode.commandTextArea.getText() == null) editNode.commandTextArea.setText("");
+  // if (editNode.commandTextArea.getText() == null)
+  // editNode.commandTextArea.setText("");
   // int caretPos = editNode.commandTextArea.getCaretPosition();
   // StringBuilder builder;
   //
@@ -227,11 +226,13 @@ public class ExecAction implements Action {
   // builder = new StringBuilder(editNode.commandTextArea.getText());
   // builder.insert(caretPos, "%" + field.getFieldName() + "%");
   // editNode.commandTextArea.setText(builder.toString());
-  // editNode.commandTextArea.positionCaret(caretPos + field.getFieldName().length() + 2);
+  // editNode.commandTextArea.positionCaret(caretPos +
+  // field.getFieldName().length() + 2);
   // break;
   // case MULTI:
   // builder = new StringBuilder(editNode.commandTextArea.getText());
-  // String zone = "$" + field.getFieldName() + "=@(%" + field.getFieldName() + "%)";
+  // String zone = "$" + field.getFieldName() + "=@(%" + field.getFieldName() +
+  // "%)";
   // builder.insert(caretPos, zone);
   // editNode.commandTextArea.setText(builder.toString());
   // editNode.commandTextArea.positionCaret(caretPos + zone.length());
@@ -247,19 +248,23 @@ public class ExecAction implements Action {
   // MenuItem notRepeatZone = new MenuItem("Replace Zone");
   // notRepeatZone.setOnAction(event -> {
   // IndexRange selection = editNode.commandTextArea.getSelection();
-  // StringBuilder builder = new StringBuilder(editNode.commandTextArea.getText());
+  // StringBuilder builder = new
+  // StringBuilder(editNode.commandTextArea.getText());
   //
   // if (selection.getLength() > 0) {
   // String selecText = editNode.commandTextArea.getSelectedText();
-  // String zone = OPEN_REPLACE_AREA + "\n" + selecText + "\n" + CLOSE_REPLACE_AREA;
+  // String zone = OPEN_REPLACE_AREA + "\n" + selecText + "\n" +
+  // CLOSE_REPLACE_AREA;
   // builder.replace(selection.getStart(), selection.getEnd(), "")
   // .insert(selection.getStart(), zone);
   // editNode.commandTextArea.setText(builder.toString());
   // editNode.commandTextArea.positionCaret(selection.getStart() + zone.length());
   // } else {
-  // builder.insert(selection.getStart(), OPEN_REPLACE_AREA + "\n\n" + CLOSE_REPLACE_AREA);
+  // builder.insert(selection.getStart(), OPEN_REPLACE_AREA + "\n\n" +
+  // CLOSE_REPLACE_AREA);
   // editNode.commandTextArea.setText(builder.toString());
-  // editNode.commandTextArea.positionCaret(selection.getStart() + OPEN_REPLACE_AREA.length() + 1);
+  // editNode.commandTextArea.positionCaret(selection.getStart() +
+  // OPEN_REPLACE_AREA.length() + 1);
   // }
   // });
   // cmdContextMenu.getItems().add(notRepeatZone);
@@ -269,10 +274,12 @@ public class ExecAction implements Action {
   // MenuItem insField = new MenuItem(field.getFieldName());
   // insField.setOnAction(event -> {
   // int caretPos = editNode.commandTextArea.getCaretPosition();
-  // StringBuilder builder = new StringBuilder(editNode.commandTextArea.getText());
+  // StringBuilder builder = new
+  // StringBuilder(editNode.commandTextArea.getText());
   // builder.insert(caretPos, "%" + field.getFieldName() + "%");
   // editNode.commandTextArea.setText(builder.toString());
-  // editNode.commandTextArea.positionCaret(caretPos + field.getFieldName().length() + 2);
+  // editNode.commandTextArea.positionCaret(caretPos +
+  // field.getFieldName().length() + 2);
   // });
   // cmdContextMenu.getItems().add(insField);
   // }
@@ -298,8 +305,6 @@ public class ExecAction implements Action {
   //
   // return editNode;
   // }
-
-
 
   @Override
   public void run(DataEntity... dataEntities) {
